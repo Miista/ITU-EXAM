@@ -174,3 +174,12 @@
 \newcommand{\moreFancyQuote}[2]{\vspace{10pt}\begin{quote}``#1'' \vspace{-5pt} \flushright{--- #2} \end{quote}\vspace{10pt}}
 
 \newcommand{\styleAppendix}{\titleformat{\chapter}[display]{\Huge\bfseries}{Appendix\hsp\thechapter}{0pt}{\Huge\bfseries}}
+
+% Questions -- will confine titleformat to just this chapter
+\newcommand\question[1]{%
+	\begingroup % Confines the titleformat to just this title
+		\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+		\titleformat{\chapter}[hang]{\Huge\bfseries}{Question \thechapter\hsp}{0pt}{\Huge\bfseries}[{\titlerule[1.5pt]}]
+		\chapter{}
+	\endgroup
+}
