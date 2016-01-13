@@ -18,7 +18,6 @@
 \RequirePackage{graphicx}
 \RequirePackage{parskip}
 \RequirePackage{url}
-\RequirePackage{background}
 \RequirePackage{lastpage}
 \RequirePackage{titlesec}
 \RequirePackage{blindtext}
@@ -28,6 +27,30 @@
 \RequirePackage{listings}
 \RequirePackage{caption}
 \RequirePackage[numbers]{natbib}
+
+\RequirePackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Hide line in header
+\cfoot{
+    \bigskip\bigskip
+    \footnotesize%
+        \begin{minipage}{.48\textwidth}
+            \vspace{-1.95cm}
+            Page \thepage\ of \pageref{LastPage}
+            \hfill\raggedleft\@coursecode\vspace{4pt}
+            \hrule height 0.1pt
+            \vspace{4pt}
+            \@fullname\hfill
+            \raggedleft\email
+        \end{minipage}\hspace{.02\textwidth}%
+        \begin{minipage}{.5\textwidth}
+            \vspace{-2cm}
+            \includegraphics[width=\linewidth,height=70pt,keepaspectratio]{footer_logo}
+        \end{minipage}%
+}
+
+\RequirePackage{etoolbox}
+\patchcmd{\chapter}{plain}{fancy}{}{} % Include footer on chapter pages
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -89,34 +112,6 @@
 
 \titlespacing*{\section} {0pt}{5pt}{2pt}
 
-\backgroundsetup{
-    scale=1,
-    color=black,
-    opacity=1,
-    angle=0,
-    position=current page.south,
-    vshift=60pt,
-    contents={%
-        \small%
-        \begin{minipage}{.48\textwidth}
-            \vspace{-2cm}
-            \parbox[b]{.4\textwidth}{%
-                Side \thepage\ af \pageref{LastPage}}\hfill
-            \parbox[b]{.6\textwidth}{%
-                \raggedleft \@coursecode}
-            \rule{\textwidth}{1.5pt}\\
-            \parbox[b]{.7\textwidth}{%
-                \@fullname }\hfill
-            \parbox[b]{.3\textwidth}{%
-                \raggedleft \email } 
-        \end{minipage}\hspace{.02\textwidth}%
-        \begin{minipage}{.5\textwidth}
-            \vspace{-2cm}
-            \includegraphics[width=\linewidth,height=70pt,keepaspectratio]{footer_logo}
-        \end{minipage}%
-    }
-}
-
 \newcommand{\namesigdate}[2][10cm]{%
     \begin{tabular}{@{}p{#1}@{}}
         #2 \\[2\normalbaselineskip] \hrule \\[0pt]
@@ -165,7 +160,6 @@
 
 % Make title page
 \newcommand\maketitlepage{%
-	\NoBgThispage
 	\title{%
 		\Huge \textbf{\@coursename} \\ \huge Exam Assignment \@when
 	}
@@ -173,6 +167,7 @@
 		\textsc{\@fullname} \\ \textsc{\email}
 	}
 	\maketitle
+	\pagestyle{fancy}
 }
 
 \newcommand{\fancyQuote}[2]{\begin{quote}``#1'' #2\end{quote}}
