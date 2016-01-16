@@ -25,7 +25,6 @@
 \RequirePackage{nopageno}
 \RequirePackage{listings}
 \RequirePackage{caption}
-\RequirePackage[numbers]{natbib}
 
 \RequirePackage{fancyhdr}
 \fancyhf{}
