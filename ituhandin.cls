@@ -103,7 +103,6 @@
 \newcommand{\hsp}{\hspace{20pt}}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{Part \thesection}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{Question \thechapter\hsp}{0pt}{\Huge\bfseries}[{\titlerule[1.5pt]}]
-% \titlespacing*{\chapter}{0cm}{-10pt}{2em}
 \titlespacing*{\chapter}{0cm}{-20pt}{2em}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{1}
@@ -174,10 +173,18 @@
 \newcommand{\styleAppendix}{\titleformat{\chapter}[display]{\Huge\bfseries}{Appendix\hsp\thechapter}{0pt}{\Huge\bfseries}}
 
 % Questions -- will confine titleformat to just this chapter
-\newcommand\question[1]{%
+\newcommand\question{%
 	\begingroup % Confines the titleformat to just this title
-		\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+		\titlespacing*{\chapter}{0cm}{-20pt}{2em}
 		\titleformat{\chapter}[hang]{\Huge\bfseries}{Question \thechapter\hsp}{0pt}{\Huge\bfseries}[{\titlerule[1.5pt]}]
 		\chapter{}
+	\endgroup
+}
+
+% Subquestion -- will print ''Part [chapter].[section]''
+\newcommand\subquestion{%
+	\begingroup % Confines the titleformat to just this section
+		\titleformat{\section}{\normalfont\Large\bfseries}{Part \thesection}{0em}{}
+		\section{}
 	\endgroup
 }
