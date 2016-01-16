@@ -23,7 +23,6 @@
 \RequirePackage{blindtext}
 \RequirePackage{color}
 \RequirePackage{nopageno}
-\RequirePackage{todonotes}
 \RequirePackage{listings}
 \RequirePackage{caption}
 \RequirePackage[numbers]{natbib}
